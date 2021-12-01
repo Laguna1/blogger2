@@ -2020,3 +2020,15 @@ Processing by ArticlesController#show as HTML
 Completed 200 OK in 89ms (Views: 60.6ms | ActiveRecord: 3.3ms | Allocations: 4226)
 
 
+Started GET "/" for ::1 at 2021-12-01 20:09:43 +0200
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (1.8ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:3
+  Rendered articles/index.html.erb within layouts/application (Duration: 28.9ms | Allocations: 3763)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 38.8ms | Allocations: 6688)
+Completed 200 OK in 44ms (Views: 26.7ms | ActiveRecord: 13.4ms | Allocations: 7436)
+
+
