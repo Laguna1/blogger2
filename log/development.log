@@ -2032,3 +2032,29 @@ Processing by ArticlesController#index as HTML
 Completed 200 OK in 44ms (Views: 26.7ms | ActiveRecord: 13.4ms | Allocations: 7436)
 
 
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1068281466923214075)[0m
+  [1m[35m (316.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateComments (20211201181141)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (767.5ms)[0m  [1m[35mCREATE TABLE "comments" ("id" bigserial primary key, "author_name" character varying, "body" character varying, "article_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_3bf61a60d3"
+FOREIGN KEY ("article_id")
+  REFERENCES "articles" ("id")
+)[0m
+  [1m[35m (36.0ms)[0m  [1m[35mCREATE INDEX "index_comments_on_article_id" ON "comments" ("article_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20211201181141"]]
+  [1m[36mTRANSACTION (21.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(1068281466923214075)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mArticle Load (0.8ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY "articles"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mComment Load (23.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."article_id" = $1 /* loading for inspect */ LIMIT $2[0m  [["article_id", 1], ["LIMIT", 11]]
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."article_id" = $1[0m  [["article_id", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mComment Create (1.2ms)[0m  [1m[32mINSERT INTO "comments" ("author_name", "body", "article_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["author_name", "Oksana"], ["body", "I think this article is gooooooooood!"], ["article_id", 1], ["created_at", "2021-12-01 18:17:43.517519"], ["updated_at", "2021-12-01 18:17:43.517519"]]
+  [1m[36mTRANSACTION (27.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mComment Create (0.9ms)[0m  [1m[32mINSERT INTO "comments" ("author_name", "body", "article_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["author_name", "Noname"], ["body", "Nothing is there"], ["article_id", 1], ["created_at", "2021-12-01 18:18:59.048029"], ["updated_at", "2021-12-01 18:18:59.048029"]]
+  [1m[36mTRANSACTION (23.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (24.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = $1[0m  [["article_id", 1]]
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."article_id" = $1 /* loading for inspect */ LIMIT $2[0m  [["article_id", 1], ["LIMIT", 11]]
