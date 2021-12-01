@@ -2,6 +2,7 @@ class ArticlesController < ApplicationController
   def index
     @articles = Article.all
     @comments = Comment.all
+    @tags = Tag.all
   end
 
   def show
@@ -41,6 +42,6 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title, :body)
+    params.require(:article).permit(:title, :body, :tag_list)
   end
 end
