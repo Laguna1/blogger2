@@ -1,0 +1,24 @@
+<h1>Articles (<%= @articles.all.count %>)</h1>
+<h4>Tags:
+<% @tags.each do |tag| %>
+  <%= link_to tag.name, tag_path(tag) %>
+<% end %>
+</h4>
+<div><% @articles.each do |article| %>
+    <p>
+      <strong>
+        <%= link_to article.title, article_path(article),
+                    class: 'article_title',
+                    id: "article_#{article.id}" %>
+        </strong>  
+        (<%= article.comments.count %>)
+    </p>
+    <p><%= article.body %></p>
+    <br />
+    
+<% end %>
+</ul>
+
+<%= link_to "Create a New Article", new_article_path %><br>
+<%= link_to "Create a New Tag", new_tag_path %><br>
+<%= link_to 'Tags List', tags_path %>
