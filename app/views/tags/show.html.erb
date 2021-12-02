@@ -9,4 +9,6 @@
 <br />
 <br />
 <br />
+
+<p><%= link_to '<<Delete this tag', tag_path(@tag), method: :delete, data: {confirm: 'Really want to delete it?'} %></p>
 <p><%= link_to '<<Back to Articles List', root_path %></p>
