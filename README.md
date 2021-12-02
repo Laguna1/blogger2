@@ -10,7 +10,7 @@
 
 * Clone this repo
 - `https://github.com/Laguna1/blogger2`
-- `cd merchant` 
+- `cd blogger2` 
 
 * System dependencies
 - `bundle install`
