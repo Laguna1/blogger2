@@ -1,5 +1,9 @@
 <h1>Articles (<%= @articles.all.count %>)</h1>
-
+<h4>Tags:
+<% @tags.each do |tag| %>
+  <%= link_to tag.name, tag_path(tag) %>
+<% end %>
+</h4>
 <div><% @articles.each do |article| %>
     <p>
       <strong>
@@ -15,4 +19,5 @@
 <% end %>
 </ul>
 
-<%= link_to "Create a New Article", new_article_path %>
+<%= link_to "Create a New Article", new_article_path %><br>
+<%= link_to "Create a New Tag", new_tag_path %>
