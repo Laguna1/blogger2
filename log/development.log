@@ -4751,3 +4751,133 @@ Processing by TagsController#index as HTML
 Completed 200 OK in 38ms (Views: 30.9ms | ActiveRecord: 5.1ms | Allocations: 4780)
 
 
+Started GET "/tags" for ::1 at 2021-12-02 02:09:40 +0200
+Processing by TagsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering tags/index.html.erb within layouts/application
+  [1m[36mTag Load (3.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags"[0m
+  ↳ app/views/tags/index.html.erb:2
+  Rendered tags/index.html.erb within layouts/application (Duration: 8.9ms | Allocations: 1043)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 19.0ms | Allocations: 4095)
+Completed 200 OK in 23ms (Views: 17.2ms | ActiveRecord: 3.0ms | Allocations: 4484)
+
+
+Started GET "/" for ::1 at 2021-12-02 02:10:45 +0200
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[35m (4.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:1
+  [1m[36mTag Load (3.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags"[0m
+  ↳ app/views/articles/index.html.erb:3
+  [1m[36mArticle Load (2.6ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:7
+  [1m[35m (3.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = $1[0m  [["article_id", 1]]
+  ↳ app/views/articles/index.html.erb:14
+  [1m[35m (5.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = $1[0m  [["article_id", 3]]
+  ↳ app/views/articles/index.html.erb:14
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = $1[0m  [["article_id", 7]]
+  ↳ app/views/articles/index.html.erb:14
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = $1[0m  [["article_id", 4]]
+  ↳ app/views/articles/index.html.erb:14
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = $1[0m  [["article_id", 8]]
+  ↳ app/views/articles/index.html.erb:14
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = $1[0m  [["article_id", 10]]
+  ↳ app/views/articles/index.html.erb:14
+  Rendered articles/index.html.erb within layouts/application (Duration: 97.6ms | Allocations: 9394)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 113.6ms | Allocations: 12361)
+Completed 200 OK in 120ms (Views: 83.0ms | ActiveRecord: 33.1ms | Allocations: 13202)
+
+
+Started GET "/articles/10" for ::1 at 2021-12-02 02:10:48 +0200
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mArticle Load (2.6ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering articles/show.html.erb within layouts/application
+  [1m[36mTag Load (4.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = $1[0m  [["article_id", 10]]
+  ↳ app/views/articles/show.html.erb:3
+  [1m[35m (2.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = $1[0m  [["article_id", 10]]
+  ↳ app/views/articles/show.html.erb:9
+  [1m[36mComment Load (1.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."article_id" = $1[0m  [["article_id", 10]]
+  ↳ app/views/articles/show.html.erb:10
+  Rendered collection of articles/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 16)
+  Rendered comments/_form.html.erb (Duration: 5.2ms | Allocations: 856)
+  Rendered articles/show.html.erb within layouts/application (Duration: 50.6ms | Allocations: 5915)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 72.3ms | Allocations: 8870)
+Completed 200 OK in 98ms (Views: 65.1ms | ActiveRecord: 14.4ms | Allocations: 12380)
+
+
+Started DELETE "/articles/10" for ::1 at 2021-12-02 02:10:53 +0200
+Processing by ArticlesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"10"}
+  [1m[36mArticle Load (2.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:26:in `destroy'
+  [1m[36mTRANSACTION (7.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/articles_controller.rb:27:in `destroy'
+  [1m[36mComment Load (2.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."article_id" = $1[0m  [["article_id", 10]]
+  ↳ app/controllers/articles_controller.rb:27:in `destroy'
+  [1m[36mArticle Destroy (21.6ms)[0m  [1m[31mDELETE FROM "articles" WHERE "articles"."id" = $1[0m  [["id", 10]]
+  ↳ app/controllers/articles_controller.rb:27:in `destroy'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/articles_controller.rb:27:in `destroy'
+Completed 500 Internal Server Error in 54ms (ActiveRecord: 34.2ms | Allocations: 4437)
+
+
+  
+ActiveRecord::InvalidForeignKey (PG::ForeignKeyViolation: ERROR:  update or delete on table "articles" violates foreign key constraint "fk_rails_50f62c287b" on table "taggings"
+DETAIL:  Key (id)=(10) is still referenced from table "taggings".
+):
+  
+app/controllers/articles_controller.rb:27:in `destroy'
+Started DELETE "/articles/10" for ::1 at 2021-12-02 02:11:07 +0200
+Processing by ArticlesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"10"}
+  [1m[36mArticle Load (1.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:26:in `destroy'
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/articles_controller.rb:27:in `destroy'
+  [1m[36mComment Load (1.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."article_id" = $1[0m  [["article_id", 10]]
+  ↳ app/controllers/articles_controller.rb:27:in `destroy'
+  [1m[36mTagging Load (2.1ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings" WHERE "taggings"."article_id" = $1[0m  [["article_id", 10]]
+  ↳ app/controllers/articles_controller.rb:27:in `destroy'
+  [1m[36mTagging Destroy (2.6ms)[0m  [1m[31mDELETE FROM "taggings" WHERE "taggings"."id" = $1[0m  [["id", 4]]
+  ↳ app/controllers/articles_controller.rb:27:in `destroy'
+  [1m[36mArticle Destroy (2.2ms)[0m  [1m[31mDELETE FROM "articles" WHERE "articles"."id" = $1[0m  [["id", 10]]
+  ↳ app/controllers/articles_controller.rb:27:in `destroy'
+  [1m[36mTRANSACTION (24.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/articles_controller.rb:27:in `destroy'
+Redirected to http://localhost:3000/articles
+Completed 302 Found in 130ms (ActiveRecord: 58.9ms | Allocations: 15406)
+
+
+Started GET "/articles" for ::1 at 2021-12-02 02:11:07 +0200
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:1
+  [1m[36mTag Load (1.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags"[0m
+  ↳ app/views/articles/index.html.erb:3
+  [1m[36mArticle Load (2.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:7
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = $1[0m  [["article_id", 1]]
+  ↳ app/views/articles/index.html.erb:14
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = $1[0m  [["article_id", 3]]
+  ↳ app/views/articles/index.html.erb:14
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = $1[0m  [["article_id", 7]]
+  ↳ app/views/articles/index.html.erb:14
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = $1[0m  [["article_id", 4]]
+  ↳ app/views/articles/index.html.erb:14
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = $1[0m  [["article_id", 8]]
+  ↳ app/views/articles/index.html.erb:14
+  Rendered articles/index.html.erb within layouts/application (Duration: 54.4ms | Allocations: 8745)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 63.3ms | Allocations: 11810)
+Completed 200 OK in 77ms (Views: 42.1ms | ActiveRecord: 22.5ms | Allocations: 13450)
+
+
